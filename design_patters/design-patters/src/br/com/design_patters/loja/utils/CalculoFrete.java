@@ -16,7 +16,7 @@ import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
 import org.xml.sax.InputSource;
 
-public class CalculoFrete {
+public interface CalculoFrete {
 	public static Frete calculaFrete(String cepDestino) {
 		Frete retornoFrete=new Frete();
 		// Dados pesquisa
@@ -137,11 +137,11 @@ public class CalculoFrete {
 		return "";
 	}
 	
-	public String CalcularTempoFrete(String estado) {
-        if (!(estado.equals("BA")) || !(estado.equals("BA"))) {
+	public static String CalcularTempoFrete(String estado) {
+        if ((estado.equals("BA")) || (estado.equals("SP"))) {
             return "O Prazo de entrega é de 5 dias uteis";
         } else {
-            return "O Prazo de entrega é de 10 dias uteis";
+            return "O Prazo de entrega é de 10 á 15 dias uteis";
         }
     }
 }

@@ -11,19 +11,11 @@ import br.com.design_patters.loja.model.Produto;
 import br.com.design_patters.loja.utils.CalculoFrete;
 import br.com.design_patters.loja.utils.Frete;
 
-public class HelloGit {
+public class ECommerce {
 
 	public static void main(String[] args) {
-//		Scanner entrada =  new Scanner(System.in);
-//		System.out.println("Informe a distância");
-//		int distancia = entrada.nextInt();
-		
-		
-		CalculoFrete carrinho = new CalculoFrete();
+		CarrinhoComprasController carrinho = new CarrinhoComprasController();
 		Frete frete = new Frete();
-
-		Scanner entrada =  new Scanner(System.in);
-		
 		JFrame frame = new JFrame("JOptionPane exemplo");
 		
 		String cep;
@@ -32,25 +24,14 @@ public class HelloGit {
 
 		String uf;
 		uf = JOptionPane.showInputDialog(null, " Informe o seu Estado: ");
-//		int uf = Integer.parseInt(estado); // Converte String em Int
 		
-		frete = CalculoFrete.calculaFrete(cep);
-		String prazoEntrega = carrinho.CalcularTempoFrete(uf);
+		frete = carrinho.calcularFrete(cep);
+		String prazoEntrega = carrinho.calcularTempoFrete(uf);
 		
 		JOptionPane.showMessageDialog(frame, "O valor do frete é: R$ "+frete.getValorFrete() +"\n" +prazoEntrega);
 		
 		
-//		System.out.println("Informe o CEP:");
-//		String cep = entrada.nextLine();
-//		
-//		 System.out.println("Digite o seu Estado:");
-//	     String uf = entrada.nextLine();
-		
-//	    frete = CalculoFrete.calculaFrete(cep);
-//		System.out.printf("O valor do frete é: R$ " +frete.getValorFrete() +"\n");
-//		
-//		String prazoEntrega = carrinho.CalcularTempoFrete(uf);
-//		System.out.printf(prazoEntrega);
+
 
 	}
 	

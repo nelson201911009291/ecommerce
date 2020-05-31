@@ -27,10 +27,11 @@ import br.com.design_patters.loja.utils.Frete;
 	private Integer quantidade = 0;
 	Frete frete = new Frete();
 	private String cepDestino = "";
+	private String tempoFrete;
 	
-	public CarrinhoComprasController() {
-		preenherListaProduto();
-	}
+//	public CarrinhoComprasController() {
+//		preenherListaProduto();
+//	}
 
 	/**
 	 * Metodo para adcionar os produtos a lista, essa lista corresponde aos
@@ -46,10 +47,10 @@ import br.com.design_patters.loja.utils.Frete;
 	 * Este metodo tem como objetivo adicionar ao atributo lista produto, os
 	 * produtos cadastrados no banco de dados
 	 */
-	@SuppressWarnings("unchecked")
-	public void preenherListaProduto() {
-		listaProdutos = produtoFacade.preenherListaProduto();
-	}
+//	@SuppressWarnings("unchecked")
+//	public void preenherListaProduto() {
+//		listaProdutos = produtoFacade.preenherListaProduto();
+//	}
 
 	/**
 	 * Este metodo tem o objetiva redirecionar o usuário a outra pagina, quando
@@ -64,6 +65,10 @@ import br.com.design_patters.loja.utils.Frete;
 	 */
 	public Frete calcularFrete(String cepDestino) {
 		return frete = CalculoFrete.calculaFrete(cepDestino);
+	}
+	
+	public String calcularTempoFrete(String estado) {
+		return tempoFrete = produtoFacade.calcularTempoFrete(estado);  
 	}
 
 	public List<Produto> getListaProdutos() {
