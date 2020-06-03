@@ -1,4 +1,4 @@
-package br.com.design_patters.loja.utils;
+package br.com.design_patters.loja.strategy;
 
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
@@ -15,6 +15,8 @@ import org.w3c.dom.Element;
 import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
 import org.xml.sax.InputSource;
+
+import br.com.design_patters.loja.model.Frete;
 
 public interface CalculoFrete {
 	public static Frete calculaFrete(String cepDestino) {

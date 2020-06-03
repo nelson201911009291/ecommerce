@@ -1,4 +1,4 @@
-package br.com.design_patters.loja.utils;
+package br.com.design_patters.loja.model;
 
 public class Frete {
 

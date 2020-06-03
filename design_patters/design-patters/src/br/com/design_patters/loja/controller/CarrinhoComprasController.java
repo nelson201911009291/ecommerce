@@ -4,13 +4,15 @@ import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.ejb.EJB;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
+import javax.inject.Inject;
 
+import br.com.design_patters.loja.facade.ProdutoFacade;
+import br.com.design_patters.loja.model.Frete;
 import br.com.design_patters.loja.model.Produto;
-import br.com.design_patters.loja.patters.ProdutoFacade;
-import br.com.design_patters.loja.utils.CalculoFrete;
-import br.com.design_patters.loja.utils.Frete;
+import br.com.design_patters.loja.strategy.CalculoFrete;
 
 	@ManagedBean
 	@SessionScoped
@@ -18,7 +20,9 @@ import br.com.design_patters.loja.utils.Frete;
 	
 	private static final long serialVersionUID = 3704720597267178326L;
 	
-	private ProdutoFacade produtoFacade;
+	@Inject
+	private ProdutoFacade produtoFacade = new ProdutoFacade();
+	
 //	private DAOGenerico dao = new DAOGenerico();
 	private List<Produto> listaProdutos = new ArrayList<>();
 	private Produto produto = new Produto();
@@ -64,11 +68,19 @@ import br.com.design_patters.loja.utils.Frete;
 	 * Informar o valor do cep do usuário
 	 */
 	public Frete calcularFrete(String cepDestino) {
-		return frete = CalculoFrete.calculaFrete(cepDestino);
+		return frete = produtoFacade.calculaFrete(cepDestino);
 	}
 	
 	public String calcularTempoFrete(String estado) {
-		return tempoFrete = produtoFacade.calcularTempoFrete(estado);  
+		return produtoFacade.calcularTempoFrete(estado);  
+	}
+	
+	/**
+	 * Calcula valor para pagamento
+	 * @param valorTotal 
+	 */
+	public int calcularValorPagamento(int condiçãodepagamento, int valorTotal) {
+		return produtoFacade.calcularValorPagamento(condiçãodepagamento, valorTotal);
 	}
 
 	public List<Produto> getListaProdutos() {
@@ -125,6 +137,15 @@ import br.com.design_patters.loja.utils.Frete;
 
 	public void setFrete(Frete frete) {
 		this.frete = frete;
+	}
+
+	public String getTempoFrete() {
+		return tempoFrete;
+	}
+
+	public String setTempoFrete(String tempoFrete) {
+		this.tempoFrete = tempoFrete;
+		return tempoFrete;
 	}
 	
 	}
