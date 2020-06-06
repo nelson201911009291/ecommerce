@@ -9,19 +9,19 @@ import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
 import javax.inject.Inject;
 
-import br.com.design_patters.loja.facade.ProdutoFacade;
+import br.com.design_patters.loja.facade.ECommerceFacade;
 import br.com.design_patters.loja.model.Frete;
 import br.com.design_patters.loja.model.Produto;
 import br.com.design_patters.loja.strategy.CalculoFrete;
 
 	@ManagedBean
 	@SessionScoped
-	public class CarrinhoComprasController implements Serializable{
+	public class CarrinhoController implements Serializable{
 	
 	private static final long serialVersionUID = 3704720597267178326L;
 	
 	@Inject
-	private ProdutoFacade produtoFacade = new ProdutoFacade();
+	private ECommerceFacade produtoFacade = new ECommerceFacade();
 	
 //	private DAOGenerico dao = new DAOGenerico();
 	private List<Produto> listaProdutos = new ArrayList<>();
@@ -79,8 +79,8 @@ import br.com.design_patters.loja.strategy.CalculoFrete;
 	 * Calcula valor para pagamento
 	 * @param valorTotal 
 	 */
-	public int calcularValorPagamento(int condiçãodepagamento, int valorTotal) {
-		return produtoFacade.calcularValorPagamento(condiçãodepagamento, valorTotal);
+	public int calcularValorPagamento(int condicaoPagamento, int valorTotal) {
+		return produtoFacade.calcularValorPagamento(condicaoPagamento, valorTotal);
 	}
 
 	public List<Produto> getListaProdutos() {
